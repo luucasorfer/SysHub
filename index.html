@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SysHub</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link 
+      rel="stylesheet" 
+      href="style.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="/#home"><img src="./logo.png" alt="" /></a>
+        </div>
+
+        <div class="menu-btn">
+          <i class="fa fa-bars fa-2x" onclick="menuShow"></i>
+        </div>
+
+        <ul>
+          <li>
+            <a href="/#phoneList"><span>Lista Telefônica</span></a>
+          </li>
+          <li>
+            <a href="/#ccusto"><span>Centro de Custo</span></a>
+          </li>
+          <li>
+            <a href="/#keyuser"><span>KeyUsers</span></a>
+          </li>
+          <li>
+            <a href="/#bip"><span>BIP</span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="root"></main>
+
+    <script src="./index.js" type="module"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
