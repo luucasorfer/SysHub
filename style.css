@@ -21,9 +21,6 @@ nav {
 
 nav .logo {
   display: flex;
-  color: white;
-  font-size: 35px;
-  font-weight: 600;
   align-items: center;
 }
 
@@ -58,7 +55,7 @@ nav ul li a:hover {
 }
 
 nav .menu-btn i {
-  color: #fff;
+  color: #f2f2f2;
   cursor: pointer;
   display: none;
 }
@@ -98,4 +95,21 @@ nav .menu-btn i {
     background: none;
     color: #f88f06;
   }
+}
+
+/* Barra de Rolagem */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Interior da barra */
+::-webkit-scrollbar-track {
+  background-color: #003840;
+}
+
+/* A barra */
+::-webkit-scrollbar-thumb {
+  background: #f2f2f2;
+  border-radius: 15px;
+  border: 1px solid #003840;
 }

@@ -1,6 +1,6 @@
 // faz a requisição AJAX para carregar os dados do arquivo JSON
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "./pages/phoneList/dados.json");
+xhr.open("GET", "./src/templates/phoneList/dados.json");
 xhr.onload = function () {
   if (xhr.status === 200) {
     // converte a resposta em um array de objetos
