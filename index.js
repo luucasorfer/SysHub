@@ -6,51 +6,55 @@ import bip from "../pages/bip/index.js";
 
 const main = document.querySelector("#root");
 
+const routes = {
+  "#home": home,
+  "#phoneList": phoneList,
+  "#ccusto": ccusto,
+  "#keyuser": keyuser,
+  "#bip": bip,
+};
+
 const init = () => {
+  const currentRoute = window.location.hash;
+  main.innerHTML = "";
+  main.appendChild(routes[currentRoute]());
 
-  window.addEventListener("hashchange", () => {
-    main.innerHTML = "";
-    switch (window.location.hash) {
-      case "#home":
-        main.appendChild(home());
-        break;
+  const cssLink = document.createElement("link");
+  cssLink.rel = "stylesheet";
 
-      case "#phoneList":
-        main.appendChild(phoneList());
-        
-        // Cria a tag link para o CSS
-        const cssLink = document.createElement("link");
-        cssLink.rel = "stylesheet";
-        cssLink.href = "../pages/phoneList/stylePhoneList.css";
+  const script = document.createElement("script");
 
-        // Adiciona a tag link no cabeçalho da página
-        const head = document.querySelector("head");
-        head.appendChild(cssLink);
+  switch (currentRoute) {
+    case "#phoneList":
+      cssLink.href = "../pages/phoneList/stylePhoneList.css";
+      script.src = "../pages/phoneList/script.js";
+      break;
+    default:
+      cssLink.href = `../pages/${currentRoute.slice(1)}/style.css`;
+      script.src = `../pages/${currentRoute.slice(1)}/script.js`;
+      break;
+  }
 
-        // Cria a tag script
-        const script = document.createElement("script");
-        script.src = "../pages/phoneList/script.js";
-
-        // Adiciona a tag script no final do body
-        document.body.appendChild(script);
-        break;
-
-      case "#ccusto":
-        main.appendChild(ccusto());
-        break;
-
-      case "#keyuser":
-        main.appendChild(keyuser());
-        break;
-        
-      case "#bip":
-        main.appendChild(bip());
-        break;
-    }
-  });
+  document.querySelector("head").appendChild(cssLink);
+  document.body.appendChild(script);
 };
 
 window.addEventListener("load", () => {
-  main.appendChild(home());
   init();
+});
+
+window.addEventListener("hashchange", () => {
+  init();
+});
+
+window.addEventListener("beforeunload", () => {
+  const currentRoute = window.location.hash;
+  localStorage.setItem("lastRoute", currentRoute);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const lastRoute = localStorage.getItem("lastRoute");
+  if (lastRoute) {
+    window.location.hash = lastRoute;
+  }
 });
